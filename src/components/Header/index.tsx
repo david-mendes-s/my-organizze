@@ -12,14 +12,14 @@ interface HeaderProps {
 }
 
 export function Header({openModal}:HeaderProps){
-    const carrosel = useRef(null);
+    const carrosel = useRef<HTMLDivElement>(null);
     const [width, setWidth] = useState(0);
 
     const {accounts} = useAccount();
     const {transactions, sumTransactions} = useTransaction();
 
     useEffect(()=>{
-        setWidth(carrosel.current?.scrollWidth - (carrosel.current?.offsetWidth));
+        setWidth((carrosel.current as HTMLDivElement).scrollWidth - (carrosel.current as HTMLDivElement).offsetWidth);
         
     },[accounts]);
 
